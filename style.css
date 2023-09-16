@@ -23,4 +23,7 @@
     height: 20%;
     margin: auto 7.5px;
     background-color: rgb(219, 219, 219);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
