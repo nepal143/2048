@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.grid{
+    display: flex;
+    width: 30vw;
+    height: 30vw;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: grey;
+
+}
+.inner-box{
+    width : 20%;
+    height: 20%;
+    margin: auto 7.5px;
+    background-color: rgb(219, 219, 219);
+}
