@@ -51,6 +51,8 @@ function checkKey(e) {
         UpArrow();
         UpArrow();
         UpArrow();
+        random_spawn();
+        change_color();
     }
     else if (e.keyCode == '40') {
         console.log("down")
@@ -58,6 +60,8 @@ function checkKey(e) {
         DownArrow();
         DownArrow();
         DownArrow();
+        random_spawn();
+        change_color();
     }
     else if (e.keyCode == '37') {
        console.log("left");
@@ -66,6 +70,8 @@ function checkKey(e) {
        LeftArrow();
        LeftArrow();
        LeftArrow();
+       random_spawn();
+       change_color();
     }
     else if (e.keyCode == '39') {
        console.log("right");
@@ -73,6 +79,8 @@ function checkKey(e) {
        RightArrow();
        RightArrow();
        RightArrow();
+       random_spawn();
+       change_color();
     }
 
 }
@@ -163,4 +171,16 @@ const DownArrow = ()=>{
     }
 }
 
+const colors = ["#d8d8d8","yellow" , "blue" , "orange" , "red"];
 
+const change_color = ()=>{
+    for(var i = 0 ;i < 16 ;i ++){
+        if(boxes[i].innerHTML != ""){
+            boxes[i].style.backgroundColor = `${colors[Math.log2(boxes[i].innerHTML)]}`
+        }
+        else{
+            boxes[i].style.backgroundColor = `${colors[0]}`
+        }
+    }
+}
+change_color();
