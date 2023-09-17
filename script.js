@@ -53,6 +53,11 @@ function checkKey(e) {
     }
     else if (e.keyCode == '37') {
        console.log("left");
+       
+       LeftArrow();
+       LeftArrow();
+       LeftArrow();
+       LeftArrow();
     }
     else if (e.keyCode == '39') {
        console.log("right");
@@ -66,11 +71,17 @@ function checkKey(e) {
 const RightArrow = () =>{
     for(var i =0 ;  i < 4 ;i++){
         for(var j = 0 ;j<3;j++){
-            if(array[i][j] === array[i][j+1] || array[i][j+1].innerHTML === "" ){
-                if(array[i][j] == array[i][j+1]){
-                    console.log("hello");
+            if(array[i][j] == array[i][j+1] || array[i][j+1].innerHTML === "" ){
+                if(array[i][j].innerHTML == array[i][j+1].innerHTML){
+                    // array[i][j+1].innerHTML *= 2;
                 }
-                array[i][j+1].innerHTML +=array[i][j].innerHTML;
+                
+                if(array[i][j+1].innerHTML  == "2"){
+                    
+                    console.log("hello");
+                    array[i][j+1].innerHTML *= 2;
+                }
+                 array[i][j+1].innerHTML =array[i][j].innerHTML
                 array[i][j].innerHTML = "" ;
                 let current_color = array[i][j].style.backgroundColor;
                 array[i][j].style.backgroundColor = "#DBDBDB"; 
@@ -81,12 +92,32 @@ const RightArrow = () =>{
     }
 }
 const LeftArrow = () =>{
-
+    for(var i =0 ;  i < 4 ;i++){
+        for(var j = 3 ;j>0;j--){
+            if(array[i][j] == array[i][j-1] || array[i][j-1].innerHTML === "" ){
+                if(array[i][j].innerHTML == array[i][j-1].innerHTML){
+                    // array[i][j+1].innerHTML *= 2;
+                }
+                
+                if(array[i][j-1].innerHTML  == "2"){
+                    
+                    console.log("hello");
+                    array[i][j-1].innerHTML *= 2;
+                }
+                 array[i][j-1].innerHTML =array[i][j].innerHTML
+                array[i][j].innerHTML = "" ;
+                let current_color = array[i][j].style.backgroundColor;
+                array[i][j].style.backgroundColor = "#DBDBDB"; 
+                array[i][j-1].style.backgroundColor = current_color; 
+                
+            }
+        }
+    }
 }
 
 const UpArrow = ()=>{
 
 }
 const DownArrow = ()=>{
-    
+
 }
