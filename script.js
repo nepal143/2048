@@ -56,16 +56,37 @@ function checkKey(e) {
     }
     else if (e.keyCode == '39') {
        console.log("right");
+       RightArrow();
+       RightArrow();
+       RightArrow();
+       RightArrow();
     }
 
 }
 const RightArrow = () =>{
     for(var i =0 ;  i < 4 ;i++){
         for(var j = 0 ;j<3;j++){
-            if(boxes[i][j] == boxes[i][j+1] || boxes[i][j+1].innerHTML === "" ){
-                boxes[i][j+1].innerHTML += boxes[i][j].innerHTML;
-                boxes[i][j].innerHTML = "" ;
+            if(array[i][j] === array[i][j+1] || array[i][j+1].innerHTML === "" ){
+                if(array[i][j] == array[i][j+1]){
+                    console.log("hello");
+                }
+                array[i][j+1].innerHTML +=array[i][j].innerHTML;
+                array[i][j].innerHTML = "" ;
+                let current_color = array[i][j].style.backgroundColor;
+                array[i][j].style.backgroundColor = "#DBDBDB"; 
+                array[i][j+1].style.backgroundColor = current_color; 
+                
             }
         }
     }
+}
+const LeftArrow = () =>{
+
+}
+
+const UpArrow = ()=>{
+
+}
+const DownArrow = ()=>{
+    
 }
