@@ -17,6 +17,7 @@
     flex-wrap: wrap;
     background-color: grey;
     padding: 5px;
+    border-radius: 10px;
 
 }
 .inner-box{

@@ -19,6 +19,7 @@ const random_spawn = ()=>{
         let number = Math.random()*(empty.length)
         console.log(number) ;   
         boxes[empty[Math.floor(number)]].innerHTML = "2" ;
+        boxes[empty[Math.floor(number)]].style.backgroundColor = "yellow";
     }
 }
 const start = ()=>{
@@ -36,4 +37,35 @@ const clear = ()=>{
 
 const GameOver = ()=>{
     console.log("GameOver");
+}
+
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '38') {
+        console.log("up")
+    }
+    else if (e.keyCode == '40') {
+        console.log("down")
+    }
+    else if (e.keyCode == '37') {
+       console.log("left");
+    }
+    else if (e.keyCode == '39') {
+       console.log("right");
+    }
+
+}
+const RightArrow = () =>{
+    for(var i =0 ;  i < 4 ;i++){
+        for(var j = 0 ;j<3;j++){
+            if(boxes[i][j] == boxes[i][j+1] || boxes[i][j+1].innerHTML === "" ){
+                boxes[i][j+1].innerHTML += boxes[i][j].innerHTML;
+                boxes[i][j].innerHTML = "" ;
+            }
+        }
+    }
 }
