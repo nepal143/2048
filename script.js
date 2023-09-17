@@ -65,7 +65,7 @@ function checkKey(e) {
     }
     else if (e.keyCode == '37') {
        console.log("left");
-       
+       changenumber("left");
        LeftArrow();
        LeftArrow();
        LeftArrow();
@@ -75,6 +75,7 @@ function checkKey(e) {
     }
     else if (e.keyCode == '39') {
        console.log("right");
+       changenumber("right");
        RightArrow();
        RightArrow();
        RightArrow();
@@ -184,3 +185,47 @@ const change_color = ()=>{
     }
 }
 change_color();
+const changenumber  = (key)=>{
+    if(key == "right" || key === "left"){
+        for(var i =  0 ;i < 4;i++){
+            let list = [] ;
+            for(var j = 0 ;j < 4 ;j++){
+                if(array[i][j].innerHTML != ""){
+                    list.push(array[i][j].innerHTML)
+                }
+            }
+            if(key == "right"){
+
+                for(var j =list.length-1 ;j >0 ;j--){
+                    if(list[j] == list[j-1]){
+                        list[j]*= 2;
+                        list[j-1] = "";
+                    }
+                }
+                for(var j = 0 ; j < list.length ;j++){
+                    console.log(list[j]);
+                    array[i][3-j].innerHTML = list[j] ;
+                }
+                for(var j = list.length ; j< 4 ;j++){
+                    array[i][3-j].innerHtml = "" ;
+                }
+            }
+            else if(key == "left"){
+                for(var j =0 ;j <list.length-1 ;j++){
+                    if(list[j] == list[j+1]){
+                        list[j]*= 2;
+                        list[j+1] = "";
+                    }
+                }
+                for(var j = 0 ; j < list.length ;j++){
+                    array[i][j].innerHTML = list[j] ;
+                }
+                for(var j = list.length ; j< 4 ;j++){
+                    array[i][j].innerHtml = "" ;
+                }
+            }
+
+        }
+
+    }
+}
