@@ -20,9 +20,18 @@ const random_spawn = ()=>{
             empty.push(i);
         }
     }
-    let number = Math.random()*(empty.length)
-    console.log(number) ;   
+    if(empty.length == 0){
+        GameOver();
+    }
+    else{
+
+        let number = Math.random()*(empty.length)
+        console.log(number) ;   
+        boxes[empty[Math.floor(number)]].innerHTML = "2" ;
+    }
 }
-window.addEventListener("scroll" ,()=>{
-    random_spawn()
-}) ;
+
+
+const GameOver = ()=>{
+    console.log("GameOver");
+}
