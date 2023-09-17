@@ -19,7 +19,7 @@ const random_spawn = ()=>{
         let number = Math.random()*(empty.length)
         console.log(number) ;   
         boxes[empty[Math.floor(number)]].innerHTML = "2" ;
-        boxes[empty[Math.floor(number)]].style.backgroundColor = "yellow";
+        // boxes[empty[Math.floor(number)]].style.backgroundColor = "yellow";
     }
 }
 const start = ()=>{
@@ -47,9 +47,17 @@ function checkKey(e) {
 
     if (e.keyCode == '38') {
         console.log("up")
+        UpArrow();
+        UpArrow();
+        UpArrow();
+        UpArrow();
     }
     else if (e.keyCode == '40') {
         console.log("down")
+        DownArrow();
+        DownArrow();
+        DownArrow();
+        DownArrow();
     }
     else if (e.keyCode == '37') {
        console.log("left");
@@ -83,9 +91,7 @@ const RightArrow = () =>{
                 }
                  array[i][j+1].innerHTML =array[i][j].innerHTML
                 array[i][j].innerHTML = "" ;
-                let current_color = array[i][j].style.backgroundColor;
-                array[i][j].style.backgroundColor = "#DBDBDB"; 
-                array[i][j+1].style.backgroundColor = current_color; 
+
                 
             }
         }
@@ -106,9 +112,7 @@ const LeftArrow = () =>{
                 }
                  array[i][j-1].innerHTML =array[i][j].innerHTML
                 array[i][j].innerHTML = "" ;
-                let current_color = array[i][j].style.backgroundColor;
-                array[i][j].style.backgroundColor = "#DBDBDB"; 
-                array[i][j-1].style.backgroundColor = current_color; 
+
                 
             }
         }
@@ -116,8 +120,47 @@ const LeftArrow = () =>{
 }
 
 const UpArrow = ()=>{
+    for(var i =0 ;  i < 4 ;i++){
+        for(var j = 3 ;j>0;j--){
+            if(array[j][i] == array[j-1][i] || array[j-1][i].innerHTML === "" ){
+                if(array[j][i].innerHTML == array[j-1][i].innerHTML){
+                    // array[i][j+1].innerHTML *= 2;
+                }
+                
+                if(array[j-1][i].innerHTML  == "2"){
+                    
+                    console.log("hello");
+                    array[j-1][i].innerHTML *= 2;
+                }
+                 array[j-1][i].innerHTML =array[j][i].innerHTML
+                array[j][i].innerHTML = "" ;
+
+                
+            }
+        }
+    }
 
 }
 const DownArrow = ()=>{
+    for(var i =0 ;  i < 4 ;i++){
+        for(var j = 0 ;j<3;j++){
+            if(array[j][i] == array[j+1][i] || array[j+1][i].innerHTML === "" ){
+                if(array[j][i].innerHTML == array[j+1][i].innerHTML){
+                    // array[i][j+1].innerHTML *= 2;
+                }
+                
+                if(array[j+1][i].innerHTML  == "2"){
+                    
+                    console.log("hello");
+                    array[j+1][i].innerHTML *= 2;
+                }
+                 array[j+1][i].innerHTML =array[j][i].innerHTML
+                array[j][i].innerHTML = "" ;
 
+                
+            }
+        }
+    }
 }
+
+
