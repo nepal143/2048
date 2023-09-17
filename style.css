@@ -16,6 +16,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     background-color: grey;
+    padding: 5px;
 
 }
 .inner-box{
@@ -26,6 +27,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
 }
 
 @media screen and (max-width: 1000px) {

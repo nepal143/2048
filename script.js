@@ -4,15 +4,6 @@ let array = [[boxes[0] ,boxes[1] ,boxes[2],boxes[3]],
 [boxes[8] ,boxes[9] ,boxes[10],boxes[11]],
 [boxes[12] ,boxes[13] ,boxes[14],boxes[15]]];
 
-const upKey =()=>{
-
-}
-const clear = ()=>{
-
-    for(let i = 0 ;i < 16 ;i++){
-        boxes[i].innerHTML = "" ;
-    }
-}
 const random_spawn = ()=>{
     let empty =[]; 
     for(let i = 0 ; i< 16 ;i++){
@@ -28,6 +19,17 @@ const random_spawn = ()=>{
         let number = Math.random()*(empty.length)
         console.log(number) ;   
         boxes[empty[Math.floor(number)]].innerHTML = "2" ;
+    }
+}
+const start = ()=>{
+    random_spawn();
+    random_spawn();
+}
+start();
+const clear = ()=>{
+
+    for(let i = 0 ;i < 16 ;i++){
+        boxes[i].innerHTML = "" ;
     }
 }
 
