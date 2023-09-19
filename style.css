@@ -2,13 +2,19 @@
     margin: 0;
     padding: 0;
 }
+body{
+    background-color: rgb(46, 46, 46);
+    color: white;
+}
 .container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 .grid{
+    color:;
     display: flex;
     width: 30vw;
     height: 30vw;
@@ -21,6 +27,8 @@
 
 }
 .inner-box{
+    font-size: 3em;
+    font-family: monospace;
     width : 20%;
     height: 20%;
     margin: auto 7.5px;
@@ -30,7 +38,27 @@
     align-items: center;
     border-radius: 10px;
 }
-
+.score{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.heading{
+    margin:3vw  5vw 3vw auto ;
+    font-size: 6em;
+    font-family: monospace;
+}
+.score-box{
+    min-width: 200px;
+    min-height: 70px;
+    display: flex;
+    background-color: rgb(0, 247, 255);
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 3em;
+    font-family: monospace;
+}
 @media screen and (max-width: 1000px) {
     .grid{
         width: 70vw;
@@ -40,5 +68,16 @@
     .inner-box{
         margin: auto 4px;
     }
+    .how-to-play{
+        width: 80vw;
+    }
     
+}
+.how-to-play{
+    width: 90vw;
+    margin-top: 5vw;
+    font-size: 2em;
+    text-align: center;
+    font-family: monospace;
+    color: bisque;
 }
