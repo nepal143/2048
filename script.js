@@ -17,7 +17,7 @@ const random_spawn = ()=>{
     else{
 
         let number = Math.random()*(empty.length)
-        console.log(number) ;   
+        // console.log(number) ;   
         boxes[empty[Math.floor(number)]].innerHTML = "2" ;
         // boxes[empty[Math.floor(number)]].style.backgroundColor = "yellow";
     }
@@ -46,7 +46,8 @@ function checkKey(e) {
     e = e || window.event;
 
     if (e.keyCode == '38') {
-        console.log("up")
+        // console.log("up")
+        changenumber("up");
         UpArrow();
         UpArrow();
         UpArrow();
@@ -55,7 +56,8 @@ function checkKey(e) {
         change_color();
     }
     else if (e.keyCode == '40') {
-        console.log("down")
+        // console.log("down")
+        changenumber("down");
         DownArrow();
         DownArrow();
         DownArrow();
@@ -64,7 +66,7 @@ function checkKey(e) {
         change_color();
     }
     else if (e.keyCode == '37') {
-       console.log("left");
+    //    console.log("left");
        changenumber("left");
        LeftArrow();
        LeftArrow();
@@ -74,7 +76,7 @@ function checkKey(e) {
        change_color();
     }
     else if (e.keyCode == '39') {
-       console.log("right");
+    //    console.log("right");
        changenumber("right");
        RightArrow();
        RightArrow();
@@ -95,7 +97,7 @@ const RightArrow = () =>{
                 
                 if(array[i][j+1].innerHTML  == "2"){
                     
-                    console.log("hello");
+                    // console.log("hello");
                     array[i][j+1].innerHTML *= 2;
                 }
                  array[i][j+1].innerHTML =array[i][j].innerHTML
@@ -116,7 +118,7 @@ const LeftArrow = () =>{
                 
                 if(array[i][j-1].innerHTML  == "2"){
                     
-                    console.log("hello");
+                    // console.log("hello");
                     array[i][j-1].innerHTML *= 2;
                 }
                  array[i][j-1].innerHTML =array[i][j].innerHTML
@@ -138,7 +140,7 @@ const UpArrow = ()=>{
                 
                 if(array[j-1][i].innerHTML  == "2"){
                     
-                    console.log("hello");
+                    // console.log("hello");
                     array[j-1][i].innerHTML *= 2;
                 }
                  array[j-1][i].innerHTML =array[j][i].innerHTML
@@ -160,7 +162,7 @@ const DownArrow = ()=>{
                 
                 if(array[j+1][i].innerHTML  == "2"){
                     
-                    console.log("hello");
+                    // console.log("hello");
                     array[j+1][i].innerHTML *= 2;
                 }
                  array[j+1][i].innerHTML =array[j][i].innerHTML
@@ -186,46 +188,162 @@ const change_color = ()=>{
 }
 change_color();
 const changenumber  = (key)=>{
-    if(key == "right" || key === "left"){
-        for(var i =  0 ;i < 4;i++){
-            let list = [] ;
-            for(var j = 0 ;j < 4 ;j++){
-                if(array[i][j].innerHTML != ""){
-                    list.push(array[i][j].innerHTML)
-                }
-            }
-            if(key == "right"){
 
-                for(var j =list.length-1 ;j >0 ;j--){
-                    if(list[j] == list[j-1]){
-                        list[j]*= 2;
-                        list[j-1] = "";
-                    }
-                }
-                for(var j = 0 ; j < list.length ;j++){
-                    console.log(list[j]);
-                    array[i][3-j].innerHTML = list[j] ;
-                }
-                for(var j = list.length ; j< 4 ;j++){
-                    array[i][3-j].innerHtml = "" ;
+    if(key == "right"){
+
+        for(var i = 0 ;i < 4 ;i++){
+            var numbers = [] ;
+            // getting all number in a row 
+            for(var j = 0 ;j < 4 ; j++){
+                if(array[i][j].innerHTML != ""){
+                    numbers.push(array[i][j].innerHTML)
                 }
             }
-            else if(key == "left"){
-                for(var j =0 ;j <list.length-1 ;j++){
-                    if(list[j] == list[j+1]){
-                        list[j]*= 2;
-                        list[j+1] = "";
+
+            // summing all number if they are equal 
+
+            for(var j = 0 ;j < numbers.length ; j++){
+                if(numbers[j] === numbers[j+1]){
+                    numbers[j+1] *= 2 ;
+                    numbers[j] = "";
+                }
+                console.log(numbers[j]);
+            }
+
+            // rewritting the numbers 
+            var p = 3 ;
+            for(var j = 0 ; j < 4 ; j++){
+                array[i][j].innerHTML = "";
+            } 
+            for(var j = numbers.length-1 ;j >= 0 ; j--){
+
+                array[i][p].innerHTML = numbers[j];
+                p--;
+            }
+            
+        }
+        
+    }
+
+
+        if(key == "left"){
+
+            for(var i = 0 ;i < 4 ;i++){
+                var numbers = [] ;
+                // getting all number in a row 
+                for(var j = 0 ;j < 4 ; j++){
+                    if(array[i][j].innerHTML != ""){
+                        numbers.push(array[i][j].innerHTML)
                     }
                 }
-                for(var j = 0 ; j < list.length ;j++){
-                    array[i][j].innerHTML = list[j] ;
+    
+                // summing all number if they are equal 
+    
+                for(var j = numbers.length-1 ;j >0 ; j--){
+                    if(numbers[j] === numbers[j-1]){
+                        numbers[j-1] *= 2 ;
+                        numbers[j] = "";
+                    }
+                    console.log(numbers[j]);
                 }
-                for(var j = list.length ; j< 4 ;j++){
-                    array[i][j].innerHtml = "" ;
+    
+                // rewritting the numbers 
+                for(var j = 0 ; j < 4 ; j++){
+                    array[i][j].innerHTML = "";
+                } 
+                for(var j = 0 ;j <numbers.length ; j++){
+    
+                    array[i][j].innerHTML = numbers[j];
                 }
+    
+            }
+
+
+
+
+
+    }
+
+
+
+
+
+
+    if(key == "up"){
+
+        for(var i = 0 ;i < 4 ;i++){
+            var numbers = [] ;
+            // getting all number in a row 
+            for(var j = 0 ;j < 4 ; j++){
+                if(array[j][i].innerHTML != ""){
+                    numbers.push(array[j][i].innerHTML)
+                }
+            }
+
+            // summing all number if they are equal 
+
+            for(var j = numbers.length-1 ;j >0 ; j--){
+                if(numbers[j] === numbers[j-1]){
+                    numbers[j-1] *= 2 ;
+                    numbers[j] = "";
+                }
+                console.log(numbers[j]);
+            }
+
+            // rewritting the numbers 
+            for(var j = 0 ; j < 4 ; j++){
+                array[j][i].innerHTML = "";
+            } 
+            for(var j = 0 ;j <numbers.length ; j++){
+
+                array[j][i].innerHTML = numbers[j];
             }
 
         }
 
+
+
+
+
+}
+
+if(key == "down"){
+
+    for(var i = 0 ;i < 4 ;i++){
+        var numbers = [] ;
+        // getting all number in a row 
+        for(var j = 0 ;j < 4 ; j++){
+            if(array[j][i].innerHTML != ""){
+                numbers.push(array[j][i].innerHTML)
+            }
+        }
+
+        // summing all number if they are equal 
+
+        for(var j = 0 ;j < numbers.length ; j++){
+            if(numbers[j] === numbers[j+1]){
+                numbers[j+1] *= 2 ;
+                numbers[j] = "";
+            }
+            console.log(numbers[j]);
+        }
+
+        // rewritting the numbers 
+        var p = 3 ;
+        for(var j = 0 ; j < 4 ; j++){
+            array[j][i].innerHTML = "";
+        } 
+        for(var j = numbers.length-1 ;j >= 0 ; j--){
+
+            array[p][i].innerHTML = numbers[j];
+            p--;
+        }
+        
     }
+    
+}
+
+
+
+
 }
