@@ -1,4 +1,6 @@
 let boxes = document.getElementsByClassName("inner-box");
+const win = document.getElementById("win");
+const lose = document.getElementById("lose");
 let array = [
     [boxes[0], boxes[1], boxes[2], boxes[3]],
     [boxes[4], boxes[5], boxes[6], boxes[7]],
@@ -11,6 +13,9 @@ const random_spawn = () => {
     for (let i = 0; i < 16; i++) {
         if (boxes[i].innerHTML === "") {
             empty.push(i);
+        }
+        if(boxes[i].innerHTML == "2048"){
+            win();
         }
     }
     if (empty.length == 0) {
@@ -35,8 +40,12 @@ const clear = () => {
 let changed = false;
 
 const GameOver = () => {
-    console.log("GameOver");
+    lose.style.display = "flex";
 };
+
+const Win = () =>{
+    win.style.display = "flex";
+}
 
 document.onkeydown = checkKey;
 
